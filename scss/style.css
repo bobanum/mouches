@@ -1,10 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Gluten:wght@900&display=swap");
 body {
   height: 100vh;
+  background-color: skyblue;
+  overflow: hidden;
+}
+body > h1 {
+  font-family: "Gluten", cursive;
+  color: #039;
+  font-size: 10em;
+  line-height: 1em;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: color 5s cubic-bezier(0.1, 0.5, 0.4, 0.7);
+  z-index: 1;
+}
+body.actif > h1 {
+  color: rgba(0, 0, 0, 0);
+  z-index: -1;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.boutons {
+  display: flex;
+  justify-content: center;
+  gap: 1ch;
+  position: relative;
+  z-index: 1;
+}
+.boutons button {
+  flex-basis: 10em;
+  font-size: 1em;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0.25em;
+  background-color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+}
+.boutons button:hover {
+  background-color: lightgray;
+}
+
+.objet {
+  --angle: 0;
+  position: absolute;
+  rotate: calc(var(--angle) * 1turn);
+}
+.objet.flip {
+  transform: scale(-1, 1);
+}
+
+.nuage {
+  width: 400px;
+  margin-left: -200px;
+  margin-top: -120px;
 }
 
 .mouche {
-  --angle: 0deg;
-  position: absolute;
   width: 50px;
   margin-left: -40px;
   margin-top: -30px;
