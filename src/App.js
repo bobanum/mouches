@@ -4,6 +4,7 @@ import Nuage from './Nuage.js';
 export default class App {
 	static _app = null;
 	static _actif = false;
+	static _gravite = 0.02;
 	static get actif() {
 		return this._actif;
 	}
@@ -35,14 +36,15 @@ export default class App {
 		}, 1000 / 60);
 		setInterval(() => {
 			if (!this.actif) return;
-			for (let i = 0; i < 20; i++) {
+			for (let i = 0; i < 50; i++) {
 				const mouche = new Mouche();
 				do {
 					mouche.x = this.randomGaussian(.2) * 110 + 55;
 				} while (mouche.x < -10 || mouche.x > 110);
 				mouche.y = Math.random() * 30 - 40;
 				mouche.vitesseX = this.randomGaussian(.1) * 1;
-				mouche.vitesseY = Math.random() * 1 - 0.5;
+				mouche.vitesseY = Math.random() * - 1;
+				mouche.accelerationY = this._gravite;
 				mouche.rotation = Math.random() * 0.01 - 0.005;
 				if (Math.random() < 0.5) {
 					mouche.dom.classList.add('flip');
